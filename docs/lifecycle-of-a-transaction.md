@@ -149,23 +149,43 @@ To create a `Run` instance we'll need to go to [coda_lib.ml](../src/lib/coda_lib
 
 It's here where we can trace the path of the transaction from the transaction pool forwards. Let's sketch that out before diving deeper into each of the subsystems:
 
-1. The transaction pool broadcasts diffs through to the network
-2. 
+1. The [transaction pool](#transaction-pool) broadcasts diffs from the transaction pool through to the [network](#network)
+2. The [proposer](#proposer) reads transactions from the transaction pool when it's time to make a transition from one blockchain state to another, those transactions are part of a diff to update a [ledger builder](#ledger-builder) which is committed to inside the new blockchain state. [External transitions](#external-transition) are emitted.
+3. The [network](#network) and the [proposer](#proposer) feed [external transitions](#external-transition) containing information on how to update a [ledger builder](#ledger-builder) with the new transaction buffered to the [ledger builder controller](#ledger-builder-controller)
+4. The [ledger builder controller](#ledger-builder-controller) figures out where this [external transition](#external-transition) fits in it's tree of possible forks. If this happens to extend our "best" path (the state upon which we will propose later) then we do an expensive materialization step to create a [tip](#tip) holding the new [ledger builder](#ledger-builder) and emit this strongest tip over the [network](#network). Healthy clients only forward tips they locally think are the strongest.
 
+<a name="transaction-pool"></a>
 ## Transaction Pool
 
-Open up [transaction_pool.ml](../src/lib/transaction_poll/transaction_pool.ml)
+Open up [transaction_pool.ml](../src/lib/transaction_poll/transaction_pool.ml)... TODO
 
+<a name="network"></a>
 ## Network
 
+TODO
+
+<a name="proposer"></a>
 ## Proposer
 
-## Snarks
+TODO
 
+<a name="external-transition"></a>
+## External Transition
+
+TODO
+
+<a name="ledger-builder-controller"></a>
 ## Ledger-builder-controller
 
+TODO
+
+<a name="ledger-builder"></a>
 ## Ledger-builder
 
+TODO
+
 ## Ledger
+
+TODO
 
 
