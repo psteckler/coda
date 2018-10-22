@@ -8,7 +8,7 @@ Your friend gives you her public key -- it's `KEFLx5TOqJNzd6buc+dW3HCjkL57NjnZIa
 Then you invoke the following command:
 
 ```bash
-$ coda client send-txn -receiver PUBKEY -amount 10 -privkey ~/my-private-key
+$ coda client send-txn -receiver PUBKEY -amount 10 -privkey-path ~/my-private-key
 ```
 
 <a name="client"></a>
