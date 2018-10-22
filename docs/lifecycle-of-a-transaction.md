@@ -1,10 +1,11 @@
-# The Lifecycle of a Transaction
+# The Lifecycle of a Transaction (technical)
 
-Intro-paragraph, you want to send a transaction in Coda, etc etc
+In Coda, transactions pass through several steps before they are considered verified and complete. This document is meant to walk through what happens to a single transaction as it works it's way through our codebase. For a more high-level simple overview aimed at users who want to understand a little bit about how transactions work check out the [lite lifecycle of a transaction](lifecycle-of-a-transaction-technical-lite.md).
 
-Your friend gives you her public key -- it's `KEFLx5TOqJNzd6buc+dW3HCjkL57NjnZIaplYJ50DO1uTfogKfwAAAAA`
+Let's say you want to send a transaction in Coda, assuming you've already made you're account and you have funds.
+Your friend gives you her public key -- it's `KEFLx5TOqJNzd6buc+dW3HCjkL57NjnZIaplYJ50DO1uTfogKfwAAAAA`.
 
-Invoke:
+Then you invoke the following command:
 
 ```bash
 $ coda client send-txn -receiver PUBKEY -amount 10 -privkey ~/my-private-key
