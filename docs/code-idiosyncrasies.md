@@ -20,7 +20,7 @@ type var = (Payload.var, Public_key.var, Signature.var) t_
 
 We're defining a base type `t_` with type variables for all types of record fields. Then we define the record using these type variables. Finally, we instantiate the record with `type t`, this is the OCaml type. And also `type var` this is the type of this value in a SNARK circuit. We'll cover this more later. Whenever we want something to be programmable from within a SNARK circuit we define it in this manner so we can reuse the record definition across both types.
 
-There is some talk of moving to OCaml objects to do this sort of thing so we don't need to deal with positional arguments. Perhaps I (@bkase) will write up an RFC for that at some point.
+There is some talk of moving to OCaml object types to do this sort of thing so we don't need to deal with positional arguments. Perhaps I (@bkase) will write up an RFC for that at some point.
 
 <a name="ppx_deriving"></a>
 ### Ppx_deriving
@@ -76,7 +76,7 @@ Such checks can be expensive, so we only want to do them once, but we want to re
 (* inside transaction.mli *)
 
 module With_valid_signature : sig
-  type nonrec t = private t [@@deriving sexp, eq, bin_io]
+  type nonrec t = private t [@@deriving sexp, eq]
 
   (*...*)
 end
